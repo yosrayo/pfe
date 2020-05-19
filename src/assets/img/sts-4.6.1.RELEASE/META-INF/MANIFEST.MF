@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_131 (Oracle Corporation)
+
+Name: SpringToolSuite4.exe
+SHA-256-Digest: qgGptnR5DhtfkZwdpAwSaSUXmCFzDxo1oHy4X/gJqGs=
+
+Name: eclipsec.exe
+SHA-256-Digest: AC5zrvSRK8EtfIzFc5+wWqT50ibc0484+DLho3gqSiM=
+

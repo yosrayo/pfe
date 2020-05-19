@@ -1,0 +1,127 @@
+
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  ><i class="fa fa-home"></i> Home</a>
+                    <span>Register</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="register-form">
+                    <h2>Register</h2>
+                    <form action="#" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                        <div class="group-input col-lg-6">
+                            <label for="username">First name</label>
+                            <input type="text" id="" [(ngModel)]="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"   style="border-radius: 10px;">
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="group-input col-lg-6">
+                            <label for="username">Last name</label>
+                            <input type="text" id="" [(ngModel)]="lastName"  formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"  style="border-radius: 10px;">
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="group-input">
+                        <label for="address">Phone number</label>
+                        <input type="number" id="" [(ngModel)]="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"  style="border-radius: 10px;">
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">Phone number is required</div>
+                        </div>
+                    </div>
+                    <div class="group-input">
+                        <label>Town/City</label>
+                        <select formControlName="city" [(ngModel)]="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" style="border-radius: 10px;height: 50px;">
+                            <option value=""></option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Ms">Ms</option>
+                        </select>
+                        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                            <div *ngIf="f.city.errors.required">Toun/City is required</div>
+                        </div>
+                    </div>
+                    <div class="group-input">
+                        <label>Country</label>
+                        <select formControlName="country" [(ngModel)]="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" style="border-radius: 10px; height: 50px;">
+                            <option value=""></option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Ms">Ms</option>
+                        </select>
+                        <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                            <div *ngIf="f.country.errors.required">Country is required</div>
+                        </div>
+                    </div>
+                        <div class="group-input">
+                            <label for="address">Address</label>
+                            <input type="text" id="" [(ngModel)]="address" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"  style="border-radius: 10px;">
+                            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required">address is required</div>
+                            </div>
+                        </div>
+                       
+                      
+                    <div class="group-input">
+                        <label for="email">Email</label>
+                        <input type="text"[(ngModel)]="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" style="border-radius: 10px;"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="group-input col-lg-6">
+                            <label for="pass">Password</label>
+                            <input type="password" [(ngModel)]="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                        <div class="group-input col-lg-6">
+                            <label for="con-pass">confirm Password</label>
+                            <input type="password" [(ngModel)]="confirmPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox"  formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                    </div>
+                    
+                        <button type="submit" class="site-btn register-btn"   style="border-radius: 10px;">REGISTER</button>
+                        <button type="reset" class="site-btn register-btn" onclick="onReset()"  style="border-radius: 10px;">CANCEL</button>
+                    </form>
+                    <div class="switch-login">
+                        <a  [routerLink]="['login']" routerLinkActive="router-link-active"  class="or-login">Or Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

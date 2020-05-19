@@ -1,0 +1,168 @@
+<header class="header-section" >
+    <div class="header-top">
+        <div class="container">
+            <div class="ht-left">
+                <div class="mail-service">
+                    <i class=" fa fa-envelope"></i>
+                    easy.delivery@gmail.com
+                </div>
+                <div class="phone-service">
+                    <i class=" fa fa-phone"></i>
+                    +116 50.188.888
+                </div>
+            </div>
+            <div class="ht-right">
+                <div class="lan-selector">
+                    <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                        <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
+                            data-title="English">English</option>
+                        <option value='yu' data-image="assets/img/flag-2.jpg" data-imagecss="flag yu"
+                            data-title="Français">Français </option>
+                    </select>
+                    </div>
+                   
+                  <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i>Login</a>
+                  <a href="#" class="login-panel" (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> {{nameUser}} 
+                   <select>
+                       <option>logout</option>
+                   </select>
+                </a>
+                 <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="login-panel"style="margin-right: 30px;"><i class="fa fa-user" ></i>signin</a>
+               
+                <div class="top-social ">
+                <a href="#"><i class="fa fa-envelope"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="ti-facebook"></i></a>
+               <a href="#"><i class="ti-twitter"></i></a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="container" style="margin-top: -25px;">
+        <div class="inner-header">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="logo">
+                        <a routerLink="home"  class="bounce"> Easy Delivery
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="advanced-search">
+                        
+                        <button type="button" class="category-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories
+                           
+                        </button>
+                        
+                       
+                        <div class="input-group"  >
+                            <input class="input-group-prepend" type="text" placeholder="What do you need?">
+                            <button type="button" ><i class="ti-search"  ></i></button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-right col-md-3">
+                    <ul class="nav-right">
+                        <li class="heart-icon">
+                            <a href="#">
+                                <i class="icon_heart_alt"></i>
+                                <span >1</span>
+                            </a>
+                        </li>
+                        <li class="cart-icon">
+                            <a href="#">
+                                <i class="icon_bag_alt"></i>
+                                <span >3</span>
+                            </a>
+                            <div class="cart-hover">
+                                <div class="select-items">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>$60.00 x 1</p>
+                                                        <h6>Kabino Bedside Table</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close">
+                                                    <i class="ti-close"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
+                                                <td class="si-text">
+                                                    <div class="product-selected">
+                                                        <p>$60.00 x 1</p>
+                                                        <h6>Kabino Bedside Table</h6>
+                                                    </div>
+                                                </td>
+                                                <td class="si-close">
+                                                    <i class="ti-close"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="select-total">
+                                    <span>total:</span>
+                                    <h5>$120.00</h5>
+                                </div>
+                                <div class="select-button">
+                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cart-price">$150.00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="nav-item " style="margin-top: -30px; height: 60px;">
+        <div class="container">
+            <div class="nav-depart ">
+                <div class="depart-btn">
+                    
+                    <i class="ti-menu"></i>
+                    <span>All departments</span>
+                    <ul class="depart-hover">
+                        <li class="active"><a href="#">Women’s Clothing</a></li>
+                        <li><a href="#">Men’s Clothing</a></li>
+                        <li><a href="#">Underwear</a></li>
+                        <li><a href="#">Kid's Clothing</a></li>
+                        <li><a href="#">Brand Fashion</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <nav class="nav-menu mobile-menu">
+                
+                <ul>
+                    <li class="active" ><a routerLink="home" >Home</a></li>
+                    <li><a routerLink="shop">Shop</a></li>
+                    <li><a routerLink="checkout">Checkout</a></li>    
+                    <li><a routerLink="register">Register</a></li>
+                    <li><a  routerLink="login">Login</a></li>
+                    
+                    <li><a routerLink="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </div>
+</header>

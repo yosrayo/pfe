@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: bamboo
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_131
+
+Name: feature.xml
+SHA-256-Digest: Kaf4niXutqnJVd883j8SbURS8hZeGltRWyHI+KKzzHM=
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+	id="org.springframework.tooling.bosh.ls.feature"
+	label="BOSH Language Server Feature"
+	version="4.6.1.202004200519"
+	provider-name="Pivotal, Inc.">
+
+    <description>
+       %description
+    </description>
+
+    <copyright>
+       %copyright
+    </copyright>
+
+    <license url="%licenseUrl">
+       %license
+    </license>
+
+	<requires>
+		<import plugin="org.eclipse.ui.genericeditor"/>
+		<import plugin="org.eclipse.lsp4e"/>
+	</requires>
+
+	<plugin
+		id="org.springframework.tooling.bosh.ls"
+		download-size="16224"
+		install-size="18733"
+		version="1.17.0.202004200519"
+		unpack="false">
+	</plugin>
+
+</feature>

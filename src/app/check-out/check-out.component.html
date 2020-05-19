@@ -1,0 +1,123 @@
+
+
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text product-more">
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  ><i class="fa fa-home"></i> Home</a>
+                    <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  >Shop</a>
+                    <span>Check Out</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="checkout-section spad">
+    <div class="container">
+        <form action="#" class="checkout-form" [formGroup]="checkout" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="checkout-content">
+                        <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="content-btn">Click Here To Login</a>
+                    </div>
+                    <h4>Biiling Details</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="fir">First Name<span>*</span></label>
+                            <input type="text" id="fir" [(ngModel)]="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" >
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="last">Last Name<span>*</span></label>
+                            <input type="text" id="last" [(ngModel)]="lastName" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <label for="cun">Country<span>*</span></label>
+                            <input type="text" id="cun" [(ngModel)]="country" formControlName="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                <div *ngIf="f.country.errors.required">Country is required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="town">Town / City<span>*</span></label>
+                            <input type="text" id="town" [(ngModel)]="city" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                <div *ngIf="f.city.errors.required">Toun/City is required</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="street">Street Address<span>*</span></label>
+                            <input type="text" id="street" [(ngModel)]="address" class="street-first" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required">address is required</div>
+                            </div>
+                            
+                        </div>
+                      
+                        
+                        <div class="col-lg-6">
+                            <label for="email">Email Address<span>*</span></label>
+                            <input type="text" id="email" [(ngModel)]="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="phone">Phone<span>*</span></label>
+                            <input type="text" id="phone" [(ngModel)]="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                <div *ngIf="f.phone.errors.required">Phone number is required</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="checkout-content">
+                        <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="content-btn">Click Here To Sign in</a>
+                    </div>
+                    <div class="place-order">
+                        <h4>Your Order</h4>
+                        <div class="order-total">
+                            <ul class="order-table">
+                                <li>Product <span>Total</span></li>
+                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
+                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
+                                <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
+                                <li class="fw-normal">Subtotal <span>$240.00</span></li>
+                                <li class="total-price">Total <span>$240.00</span></li>
+                            </ul>
+                           
+                            <div class="row">  
+                            
+                                
+                                <div class="col-lg-6">
+                                    <div class="order-btn">
+                                <button type="submit" class="site-btn place-btn">Place Order</button>
+                                      </div>
+                            </div>
+            
+                                <div class="col-lg-6">
+                                    <div class="order-btn">
+                                <button type="reset" class="site-btn place-btn" onclick="onReset()" >ignore</button>
+                                      </div>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
