@@ -6,5 +6,7 @@ export class User {
     telephone:string;
     email:string;
     mdp: string;
+    zone:string;
+    grade:string;
 
 }

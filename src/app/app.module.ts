@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { NgSearchPipe } from 'ng-search-pipe';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
+
 
 import { HomeComponent } from './home/home.component';
-import { BlogDetailsComponent } from './blog-details/blog-details.component';
+
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
@@ -16,12 +18,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { QuantiteComponent } from './quantite/quantite.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BlogDetailsComponent,
+   
     CheckOutComponent,
     ContactComponent,
     LoginComponent,
@@ -31,12 +36,23 @@ import { LivreurComponent } from './livreur/livreur.component';
     FooterComponent,
     NavbarComponent,
     LivreurComponent,
+    QuantiteComponent,
+    AboutusComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, ReactiveFormsModule ,NgSearchPipe,
+    FormsModule, 
+    ReactiveFormsModule ,
+    NgSearchPipe , 
+    RatingModule,
+    HttpClientModule,
+
+   
+    
+  
+    
     
   ],
   providers: [],

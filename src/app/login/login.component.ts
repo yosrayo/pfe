@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +10,43 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user: User;
-  constructor(private router: Router) { }
+  users:User[];
+  b=false;
+  constructor(private router: Router,private userService:UserService) { }
  
   ngOnInit(): void {
     this.user= new User();
+    this.getUsers();
   }
-  
+  getUsers()
+  {
+    this.userService.getUsers().subscribe(users => this.users = users);
+    console.log(this.users);
+  }
   connexion()
   {
-    if((this.user.email=="admin@gmail.com")||(this.user.mdp=="admin"))
-    {
-window.location.replace("home");
-localStorage.setItem("name","admin");
+   
+for(let us of this.users)
+{
+  console.log("loop");
+  if((this.user.email==us.email)&&(this.user.mdp==us.mdp))
+ { alert("ok");
+this.b=true;
+  
 
-    }
-    else
+
+//window.location.replace("home");
+localStorage.setItem("name","user");
+break;
+ }
+}
+    
+  
+    if(!this.b)
     {
-      alert("compte non reconnue!");
-      localStorage.setItem("name","");
+      alert("compte non reconnu!");
     }
-  }
+  
+}
   
 }

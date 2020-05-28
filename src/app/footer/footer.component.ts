@@ -12,4 +12,13 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  fb(){
+    window.open('https://www.facebook.com/polpoTN/');
+  }
+  twitter(){
+    window.open('http://localhost:4200/ch');
+  }
+  insta(){
+    window.open('https://www.instagram.com/polpo.shop/');
+  }
 }
