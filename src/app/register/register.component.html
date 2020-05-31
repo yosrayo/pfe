@@ -61,10 +61,10 @@
                         <label>Country</label>
                         <select formControlName="country" [(ngModel)]="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" style="border-radius: 10px; height: 50px;">
                             <option value=""></option>
-                            <option value="Mr">Mr</option>
-                            <option value="Mrs">Mrs</option>
-                            <option value="Miss">Miss</option>
-                            <option value="Ms">Ms</option>
+                            <option value="Mr">Tunisia</option>
+                            <option value="Mrs">algeria</option>
+                            <option value="Miss">Marocco</option>
+                            
                         </select>
                         <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                             <div *ngIf="f.country.errors.required">Country is required</div>

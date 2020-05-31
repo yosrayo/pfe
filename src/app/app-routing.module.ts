@@ -5,6 +5,7 @@ import { ShopComponent } from './shop/shop.component';
 import { QuantiteComponent } from './quantite/quantite.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { LivreurComponent } from './livreur/livreur.component';
+import { FavorisComponent } from './favoris/favoris.component';
 
 import{ HomeComponent} from './home/home.component';
 import{ RegisterComponent} from './register/register.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'product', component: ProductComponent },
   {path:'aboutus', component: AboutusComponent },
   {path:'livreur', component: LivreurComponent },
+  {path:'favoris', component: FavorisComponent },
   {path:'checkout', component: CheckOutComponent }
   
 

@@ -3,3 +3,4 @@ export class Favoris {
     id_user : number;
     id_produit : number;
 }
+

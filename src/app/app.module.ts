@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgSearchPipe } from 'ng-search-pipe';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 
 import { HomeComponent } from './home/home.component';
@@ -21,6 +21,10 @@ import { LivreurComponent } from './livreur/livreur.component';
 import { QuantiteComponent } from './quantite/quantite.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RatingModule } from 'ng-starrating';
+import { FavorisComponent } from './favoris/favoris.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { RatingModule } from 'ng-starrating';
     LivreurComponent,
     QuantiteComponent,
     AboutusComponent,
+    FavorisComponent,
     
   ],
   imports: [
@@ -47,7 +52,11 @@ import { RatingModule } from 'ng-starrating';
     ReactiveFormsModule ,
     NgSearchPipe , 
     RatingModule,
-    HttpClientModule,
+    HttpClientModule
+    
+    
+  
+
 
    
     

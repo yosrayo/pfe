@@ -18,12 +18,14 @@ export class LoginComponent implements OnInit {
     this.user= new User();
     this.getUsers();
   }
+
   getUsers()
   {
     this.userService.getUsers().subscribe(users => this.users = users);
     console.log(this.users);
   }
   connexion()
+
   {
    
 for(let us of this.users)
@@ -48,5 +50,6 @@ break;
     }
   
 }
+
   
 }
