@@ -68,7 +68,8 @@ export class CheckOutComponent implements OnInit {
 
  // }
 //}
- 
+ //checkout formulaire
+
   }
   get f() { return this.checkout.controls; }
   onSubmit() {
@@ -108,5 +109,15 @@ getTotal() {
       }
   }
   return total;
+}
+
+checkoutForm(){
+this.userService.getUsers().subscribe((res) => {
+ 
+   if(localStorage.getItem("id") === this.user.id.toString()) {
+     this.list=res;
+   }
+   
+});
 }
 }

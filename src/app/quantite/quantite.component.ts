@@ -20,7 +20,7 @@ export class QuantiteComponent implements OnInit {
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
       console.log("listPanier",this.list);
-      for(let i = 0 ; i < 100; i++) {
+      for(let i = 0 ; i <= this.list.length; i++) {
        if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import {ProduitService} from '../services/produit.service'
 import { FavorisService } from '../services/favoris.service';
 import { Favoris } from '../classes/favoris';
@@ -68,29 +68,25 @@ export class ShopComponent implements OnInit {
  //panier 
  pan(i){
  console.log(this.c[i]);
-
-
- console.log("panier" ,this.panier);
-//this.panier.id_user=localStorage.getItem("id_user");
- this.panier.nom=this.c[i].nom;
+ this.panier.id_user=localStorage.getItem("id");
+ this.panier.nom_produit=this.c[i].nom_produit;
  this.panier.prix=this.c[i].prix;
 this.panier.photo=this.c[i].photo;
- this.panier.quantite=1;      
+ this.panier.quantite=1; 
 
- this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)});
+ this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)}); 
  alert("ajouter avec succés");
  }
+
 //favoris
 
 fav(i){
  console.log(this.c[i]);
-
-
-  console.log("favoris" ,this.favoris);
   this.favoris.id_user=localStorage.getItem("id");
   this.favoris.nom=this.c[i].nom;
   this.favoris.prix=this.c[i].prix;
   this.favoris.photo=this.c[i].photo;
+  this.favoris.categorie=this.c[i].categorie;
     
 
   this.favorisService.create(this.favoris).subscribe(fav=>{this.favoriss.push(this.favoris)});

@@ -4,15 +4,11 @@ import { NgSearchPipe } from 'ng-search-pipe';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-
-
 import { HomeComponent } from './home/home.component';
-
 import { CheckOutComponent } from './check-out/check-out.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ProductComponent } from './product/product.component';
 import { ShopComponent } from './shop/shop.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
@@ -31,12 +27,10 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
   declarations: [
     AppComponent,
     HomeComponent,
-   
     CheckOutComponent,
     ContactComponent,
     LoginComponent,
     RegisterComponent,
-    ProductComponent,
     ShopComponent,
     FooterComponent,
     NavbarComponent,

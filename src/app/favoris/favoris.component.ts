@@ -20,7 +20,7 @@ export class FavorisComponent implements OnInit {
     this.favorisService.getFavoriss().subscribe((res) => {
       this.list = res;
       console.log("listFv",this.list);
-      for(let i = 0 ; i < 100; i++) {
+      for(let i = 0 ; i <= this.list.length ; i++) {
        if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
           this.c.push(this.list[i]);
           console.log(" c " ,this.c);

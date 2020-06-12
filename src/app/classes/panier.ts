@@ -1,6 +1,6 @@
 export class Panier {
     id : number;
-    nom: string;
+    nom_produit: string;
     prix: number;
     photo: string;
     id_user : number;
