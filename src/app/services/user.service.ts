@@ -41,6 +41,13 @@ export class UserService {
       catchError(this.handleError<User>('create'))
     );
   }
+  update(user: User | number): Observable<User> {
+    return this.http.put<User>(this.UsersUrl, user, httpOptions).pipe(
+      tap((newUser: User) => console.log(`updeted user w/ id=${newUser.id}`)),
+      catchError(this.handleError<User>('create'))
+    );
+  }
+
   delete(user: User | number): Observable<User> {
     const id = typeof user === 'number' ? user : user.id;
     const url = `${this.UsersUrl}/${id}`;

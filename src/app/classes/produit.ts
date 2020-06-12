@@ -3,7 +3,8 @@ export class Produit {
     num_produit:number;
     nom_produit:string;
     quantite:string;
-    prix:string;
+    prix:number;
+    photo:string;
     categorie:string;
     
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FavorisService } from '../services/favoris.service';
+
+import { Favoris } from '../classes/favoris';
 
 @Component({
   selector: 'app-favoris',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favoris.component.css']
 })
 export class FavorisComponent implements OnInit {
-
-  constructor() { }
+  list = [] as any ;
+  num:number;
+  c = [] as any;
+  favoris:Favoris;
+  constructor( private favorisService: FavorisService ) { }
 
   ngOnInit(): void {
-  }
 
+    this.favorisService.getFavoriss().subscribe((res) => {
+      this.list = res;
+      console.log("listFv",this.list);
+      for(let i = 0 ; i < 100; i++) {
+       if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
+          this.c.push(this.list[i]);
+          console.log(" c " ,this.c);
+        }}
+    });
+    
+    } 
+
+    nember() {
+      console.log("favnum",this.num);
+          this.num = this.list.length;   
+           return this.num;
+ 
 }
+
+  }

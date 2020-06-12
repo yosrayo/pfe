@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/user.service'
+import {UserService} from '../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { User } from '../classes/user';
@@ -55,6 +55,8 @@ this.user=new User();
           this.user.nom=this.lastName;
           this.user.prenom=this.firstName;
           this.user.adresse=this.address;
+          this.user.pays=this.country;
+          this.user.ville=this.city;
           this.user.telephone=this.phone;
           this.user.email=this.email;
           this.user.mdp=this.password;
@@ -76,7 +78,7 @@ alert("ajouter avec succés");
 
 
 
-      //  window.location.replace("login");
+       window.location.replace("login");
         }
     
     }

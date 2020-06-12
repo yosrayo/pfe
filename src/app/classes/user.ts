@@ -3,6 +3,8 @@ export class User {
     nom:string;
     prenom:string;
     adresse:string;
+    pays: string;
+    ville: string;
     telephone:string;
     email:string;
     mdp: string;

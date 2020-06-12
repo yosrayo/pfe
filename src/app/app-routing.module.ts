@@ -6,6 +6,7 @@ import { QuantiteComponent } from './quantite/quantite.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { LivreurComponent } from './livreur/livreur.component';
 import { FavorisComponent } from './favoris/favoris.component';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 import{ HomeComponent} from './home/home.component';
 import{ RegisterComponent} from './register/register.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'aboutus', component: AboutusComponent },
   {path:'livreur', component: LivreurComponent },
   {path:'favoris', component: FavorisComponent },
+  {path:'resetPass', component: ResetPassComponent },
   {path:'checkout', component: CheckOutComponent }
   
 

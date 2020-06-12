@@ -22,6 +22,7 @@ import { QuantiteComponent } from './quantite/quantite.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { RatingModule } from 'ng-starrating';
 import { FavorisComponent } from './favoris/favoris.component';
+import { ResetPassComponent } from './reset-pass/reset-pass.component';
 
 
 
@@ -43,6 +44,7 @@ import { FavorisComponent } from './favoris/favoris.component';
     QuantiteComponent,
     AboutusComponent,
     FavorisComponent,
+    ResetPassComponent,
     
   ],
   imports: [

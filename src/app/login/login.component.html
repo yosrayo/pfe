@@ -25,7 +25,7 @@
                         </div>
                         <div class="group-input">
                             <label for="pass">Password *</label>
-                            <input type="password" id="pass"  [(ngModel)]="user.mdp" name="mdp"  #mdp="ngModel"  required style="border-radius: 10px;">
+                            <input type="password" id="mdp"  [(ngModel)]="user.mdp" name="mdp"  #mdp="ngModel"  required style="border-radius: 10px;">
                         </div>
                         <div class="group-input gi-check">
                             <div class="gi-more">
@@ -34,7 +34,7 @@
                                     <input type="checkbox" id="save-pass">
                                     <span class="checkmark"></span>
                                 </label>
-                                <a href="#" class="forget-pass">Forget your Password</a>
+                                <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="forget-pass" >Forget your Password</a>
                             </div>
                         </div>
     

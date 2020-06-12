@@ -1,42 +1,40 @@
 <header class="header-section" >
     <div class="header-top" >
-        
+        <div class="container">
             <div class="ht-left" >
-                <div class="mail-service" style="margin-left: 20px;">
+                <div class="mail-service" >
                     <i class=" fa fa-envelope"></i>
-                   <b> contact@polpoShop.com</b>
+                   contact@polpoShop.com
                 </div>
                 <div class="phone-service">
                     <i class=" fa fa-phone"></i>
-                   <b> +116 31 597 990</b>
+                    +116 31 597 990
                 </div>
             </div>
             <div class="ht-right" >
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i>Login</a>
+                <a href="#" class="login-panel" (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> Logout 
+                 
+              </a>
                 <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;" >
                         <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
-                            data-title="English"><b>English</b></option>
+                            data-title="English">English</option>
                         <option value='yu' data-image="assets\img\flag-2.png" data-imagecss="flag yu"
-                            data-title="Français" style="width: 55px;height: 200px;">Français </option>
+                            data-title="Français" style="width: 300px;">Français </option>
                     </select>
                     </div>
-                   
-                  <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i><b>Login</b></a>
-                  <a href="#" class="login-panel" (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> <b>{{nameUser}} </b>
-                   <select>
-                       <option>logout</option>
-                   </select>
-                </a>
-                 <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="login-panel"style="margin-right: 30px;"><i class="fa fa-user-plus"></i><b>Register</b></a>
-               
-                <div class="top-social " style="margin-left: 400px;">
+                    
+        
+                  
+                <div class="top-social ">
                 <a href="mailto:contact@polposhop.com"><i class="fa fa-envelope"></i></a>
                 <a (click)="insta()"><i class="fa fa-instagram"></i></a>
                 <a (click)="fb()"><i class="ti-facebook"></i></a>
                <a (click)="twitter()"><i class="ti-twitter"></i></a>
                 </div>
             </div>
-       
+        </div>
   
     </div>
     <div class="container" >
@@ -52,10 +50,10 @@
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
                         
-                        <button type="button" class="category-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories
+                        <button type="button" class="category-btn dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Categories
                            
                         </button>
-                        
+                  
                        
                         <div class="input-group"  >
                             <input class="input-group-prepend" type="text" placeholder="What do you need?">
@@ -73,44 +71,33 @@
                             </a>
                         </li>
                         <li class="cart-icon">
-                            <a href="#">
+                            <a [routerLink]="['/checkout']" routerLinkActive="router-link-active" >
                                 <i class="icon_bag_alt"></i>
-                                <span >3</span>
+                                <span >{{ nember() }}</span>
                             </a>
-                            <div class="cart-hover">
-                                <div class="select-items">
+                            <div class="cart-hover" *ngFor="let m of p">
+                                <div class="select-items" >
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
+                                            <tr *ngFor="let m of p">
+                                                <td class="si-pic">{{m.photo}}</td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
+                                                        <p >{{m.prix}}DT</p>
+                                                        <h6>{{m.nom_produit}}</h6>
                                                     </div>
                                                 </td>
                                                 <td class="si-close">
-                                                    <i class="ti-close"></i>
+                                                    <i class="ti-close" (click)="onDelete(m.id)"></i><!--supp de panier-->
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
+        
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="select-total">
                                     <span>total:</span>
-                                    <h5>$120.00</h5>
+                                    <h5>{{ getTotal() }}DT</h5><!--calcule totoale-->
                                 </div>
                                 <div class="select-button">
                                     <a [routerLink]="['/quantite']" routerLinkActive="router-link-active"  class="primary-btn view-card">VIEW CARD</a>
@@ -118,7 +105,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="cart-price">$150.00</li>
+                        <li class="cart-price">{{ getTotal() }}DT</li>
                     </ul>
                 </div>
             </div>

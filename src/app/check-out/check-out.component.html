@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
                     <a [routerLink]="['/home']" routerLinkActive="router-link-active"  ><i class="fa fa-home"></i> Home</a>
-                    <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  >Shop</a>
+                    <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  > <i class="fa fa-shopping-cart"></i>Shop</a>
                     <span>Check Out</span>
                 </div>
             </div>
@@ -91,11 +91,10 @@
                         <div class="order-total">
                             <ul class="order-table">
                                 <li>Product <span>Total</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$60.00</span></li>
-                                <li class="fw-normal">Combination x 1 <span>$120.00</span></li>
-                                <li class="fw-normal">Subtotal <span>$240.00</span></li>
-                                <li class="total-price">Total <span>$240.00</span></li>
+                                <li class="fw-normal" *ngFor="let m of p">{{m.nom_produit}} x {{m.quantite}} <span>{{m.prix}}DT</span></li>
+                        
+                                <li class="fw-normal">Subtotal <span>{{getTotal()}}DT</span></li>
+                                <li class="total-price">Total <span>{{getTotal()}}DT</span></li>
                             </ul>
                            
                             <div class="row">  
