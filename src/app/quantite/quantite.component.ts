@@ -10,6 +10,7 @@ import { Panier } from '../classes/panier';
 export class QuantiteComponent implements OnInit {
   list = [] as any ;
   panier: Panier;
+  paniers={} as any;
   p= [] as any ;
   totalamount:number;
   
@@ -20,42 +21,46 @@ export class QuantiteComponent implements OnInit {
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
       console.log("listPanier",this.list);
-      for(let i = 0 ; i <= this.list.length; i++) {
-       if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
+      for(let i = 0 ; i < this.list.length ; i++) {
+       if(localStorage.getItem("id") === this.list[i].id_user) {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);
         }}
-
+  
     });
   }
-
+//supprimer produit
   onDelete(_id: string) {
     if (confirm('Voulez-vous vraiment supprimer ce produit ?') === true) {
       this.panierService.deletePanier(_id).subscribe((res) => {
         this.ngOnInit();
       });
+      window.location.replace("quantite");
     }
   }
-  getTotal() {
-    let total = 0;
-    for (var i = 0; i < this.p.length; i++) {
-        if (this.p[i].quantite) {
-            total = (this.p[i].prix) * (this.p[i].quantite);
-            this.totalamount = total;
-        }
-    }
-    return total;
+
+  //calculer somme produits
+quan(){
+  let total = 1;
+  for (var i = 0; i < this.p.length; i++) {
+      
+          total = this.p[i].quantite*this.p[i].prix;
+          this.totalamount = total;
+     
+  }
+  return total;
+
 }
 
-
+//calculer somme total
 somme() {
   let total = 0;
   for (var i = 0; i < this.p.length; i++) {
-      if (this.p[i].somme) {
-          total += this.p[i].somme;
+          total += this.quan();
           this.totalamount = total;
-      }
   }
   return total;
 }
+
+
 }

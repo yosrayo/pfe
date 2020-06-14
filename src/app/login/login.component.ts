@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     window.location.replace("shop");
    
     localStorage.setItem("name",this.i);
-    localStorage.setItem("id","");
+    localStorage.setItem("id", "");
     
      }
     

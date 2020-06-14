@@ -24,11 +24,12 @@ export class NavbarComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.nember();
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
       console.log("listPanier",this.list);
       for(let i = 0 ; i <= this.list.length; i++) {
-       if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
+       if(localStorage.getItem("id") === this.list[i].id_user) {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);
         }}
@@ -131,6 +132,7 @@ onDelete(_id: string) {
     this.panierService.deletePanier(_id).subscribe((res) => {
       this.ngOnInit();
     });
+    window.location.replace("shop");
   }
 }
 }

@@ -49,4 +49,7 @@ export class FavorisService {
       catchError(this.handleError<Favoris>('delete'))
     );
   }
+  deleteFavoris(_id: string) {
+    return this.http.delete(this.FavorissUrl + `/${_id}`);
+  }
 }

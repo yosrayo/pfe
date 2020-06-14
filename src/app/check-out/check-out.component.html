@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="fir">First Name<span>*</span></label>
-                            <input type="text" id="fir" [(ngModel)]="list.firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" >
+                            <input type="text" id="fir" [(ngModel)]="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" >
                             <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div>
@@ -91,7 +91,8 @@
                         <div class="order-total">
                             <ul class="order-table">
                                 <li>Product <span>Total</span></li>
-                                <li class="fw-normal" *ngFor="let m of p">{{m.nom_produit}} x {{m.quantite}} <span>{{m.prix}}DT</span></li>
+                                <li class="fw-normal" *ngFor="let m of p">{{m.nom_produit}} x {{m.quantite}} ({{m.prix}})
+                                    <span>{{quan()}}DT</span></li>
                         
                                 <li class="fw-normal">Subtotal <span>{{getTotal()}}DT</span></li>
                                 <li class="total-price">Total <span>{{getTotal()}}DT</span></li>
@@ -106,7 +107,7 @@
                             </div>
                                 <div class="col-lg-4">
                                     <div class="order-btn">
-                                <button type="submit" class="site-btn place-btn" style="background-color: #e7ab3c; height: 70px;border-color: #e7ab3c;">Place Order</button>
+                                <button type="submit" class="site-btn place-btn" style="background-color: #e7ab3c; height: 70px;border-color: #e7ab3c;" (click)="PasseCommande()">Place Order</button>
                                       </div>
                             </div>
             

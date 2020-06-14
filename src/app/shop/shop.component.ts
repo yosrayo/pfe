@@ -20,9 +20,9 @@ export class ShopComponent implements OnInit {
   produit:Produit;
   produits:Produit[];
   panier = {} as any;
-  paniers= [] as any;
+  paniers:Panier [] ;
   favoris = {} as any;
-  favoriss= [] as any
+  favoriss: Favoris[] ;
   list = [] as any ;
   c = [] as any;
   b = [] as any;
@@ -68,7 +68,7 @@ export class ShopComponent implements OnInit {
  //panier 
  pan(i){
  console.log(this.c[i]);
- this.panier.id_user=localStorage.getItem("id");
+ this.panier.id_user= localStorage.getItem("id")
  this.panier.nom_produit=this.c[i].nom_produit;
  this.panier.prix=this.c[i].prix;
 this.panier.photo=this.c[i].photo;
@@ -76,20 +76,24 @@ this.panier.photo=this.c[i].photo;
 
  this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)}); 
  alert("ajouter avec succés");
+ window.location.replace("shop");
  }
 
 //favoris
 
 fav(i){
- console.log(this.c[i]);
-  this.favoris.id_user=localStorage.getItem("id");
-  this.favoris.nom=this.c[i].nom;
+  console.log(this.c[i]);
+ this.favoris.id_user=5;
+ this.favoris.id_produit=7;
+  this.favoris.nom_produit=this.c[i].nom_produit;
   this.favoris.prix=this.c[i].prix;
-  this.favoris.photo=this.c[i].photo;
-  this.favoris.categorie=this.c[i].categorie;
-    
+ this.favoris.photo=this.c[i].photo;
+ this.favoris.categorie=this.c[i].categorie;
 
-  this.favorisService.create(this.favoris).subscribe(fav=>{this.favoriss.push(this.favoris)});
+  
+ 
+  this.favorisService.create(this.favoris).subscribe(favoris=>{this.favoriss.push(favoris)}); 
   alert("ajouter avec succés");
+  window.location.replace("shop");
 }
 }

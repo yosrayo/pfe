@@ -31,6 +31,9 @@
                             <div class="product-item">
                                 <div class="pi-pic">
                                     {{m.photo}}
+                                    <div class="icon" >
+                                        <i class="ti-close" (click)="onDelete(m.id)"></i>
+                                    </div>
                                     <ul>
                                         <li class="w-icon active"><a><i class="icon_bag_alt"></i></a></li>
                                         <li class="quick-view"><a >+ Add to basket</a></li>

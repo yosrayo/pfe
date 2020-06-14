@@ -51,4 +51,8 @@ export class PanierService {
   deletePanier(_id: string) {
     return this.http.delete(this.PaniersUrl + `/${_id}`);
   }
+  updatepanier(emp) {
+    return this.http.put(this.PaniersUrl + `/${emp._id}`, emp);
+  }
+
 }
