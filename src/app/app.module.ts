@@ -19,9 +19,14 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { RatingModule } from 'ng-starrating';
 import { FavorisComponent } from './favoris/favoris.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { TranslateModule , TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  // tslint:disable-next-line:no-unused-expression
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -48,19 +53,20 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     ReactiveFormsModule ,
     NgSearchPipe , 
     RatingModule,
-    HttpClientModule
-    
-    
-  
+    HttpClientModule ,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }),
 
-
-   
-    
-  
-    
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  TranslateModule
+}

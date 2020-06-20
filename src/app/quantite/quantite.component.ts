@@ -13,7 +13,7 @@ export class QuantiteComponent implements OnInit {
   paniers={} as any;
   p= [] as any ;
   totalamount:number;
-  
+  m=[]as any;
   constructor(private panierService:PanierService) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class QuantiteComponent implements OnInit {
       this.list = res;
       console.log("listPanier",this.list);
       for(let i = 0 ; i < this.list.length ; i++) {
-       if(localStorage.getItem("id") === this.list[i].id_user) {
+       if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);
         }}
@@ -41,7 +41,7 @@ export class QuantiteComponent implements OnInit {
 
   //calculer somme produits
 quan(){
-  let total = 1;
+  let total = 0;
   for (var i = 0; i < this.p.length; i++) {
       
           total = this.p[i].quantite*this.p[i].prix;
@@ -61,6 +61,13 @@ somme() {
   }
   return total;
 }
-
+updateCard() {
+  for(let i = 0 ; i <= this.p.length ; i++) {
+  this.panierService.updatepanier(this.p[i]).subscribe((res) => {
+   console.log('card');
+  });
+window.location.replace("quantite")
+}
+}
 
 }

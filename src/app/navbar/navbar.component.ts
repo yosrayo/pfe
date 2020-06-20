@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PanierService } from '../services/panier.service';
 import { CategorieService } from '../services/categorie.service';
 import { Categorie } from '../classes/categorie';
+import { FavorisService } from '../services/favoris.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -13,37 +16,61 @@ export class NavbarComponent implements OnInit {
   searchText: String;
   nameUser = localStorage.getItem('name');
   list = [] as any ;
+  l = [] as any ;
   p = [] as any ;
+  ll = [] as any ;
   loc: string;
  cat = [] as any ;
+ selected: string;
+ fr = 'fr';
   categorie:Categorie;
   totalamount:number;
   num:number;
-  constructor( private panierService:PanierService ,private categorieService: CategorieService) { 
-    
+  nav:string;
+  constructor(public translate: TranslateService, private panierService:PanierService ,private categorieService: CategorieService, private favorisService:FavorisService ) { 
+    translate.addLangs(['en' , 'fr' ]);
+    translate.setDefaultLang('en');
+
   }
   
   ngOnInit(): void {
+    this.nav = localStorage.getItem("nav");
     this.nember();
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
       console.log("listPanier",this.list);
-      for(let i = 0 ; i <= this.list.length; i++) {
-       if(localStorage.getItem("id") === this.list[i].id_user) {
+      for(let i = 0 ; i < this.list.length ; i++) {
+       if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);
         }}
+  
+    
 
     });
     this.categorieService .getCategories().subscribe((res) => {
       this.cat = res;
     });
 
-    
-
+    this.favorisService.getFavoriss().subscribe((res) => {
+      this.l = res;
+      console.log("listFv",this.l);
+      for(let i = 0 ; i <= this.l.length ; i++) {
+       if(localStorage.getItem("id") === this.l[i].id_user.toString()) {
+          this.ll.push(this.l[i]);
+          console.log("ll " ,this.ll);
+        }
+      }
+    });
+this.nemberFav();
   }
 
+  nemberFav() {
+    console.log("favnum",this.num);
+        this.num = this.ll.length;   
+         return this.num;
 
+}
   
   clothers() {
     localStorage.setItem("clo","clo");
@@ -126,7 +153,7 @@ nember() {
   return this.num;
 
 }
-
+//delete de panier
 onDelete(_id: string) {
   if (confirm('Voulez-vous vraiment supprimer ce produit ?') === true) {
     this.panierService.deletePanier(_id).subscribe((res) => {
@@ -135,4 +162,19 @@ onDelete(_id: string) {
     window.location.replace("shop");
   }
 }
+//langues
+filterChanged(selectedValue: string) {
+  this.selected = selectedValue;
+  this.translate.use(this.selected);
+  console.log( this.selected);
+  console.log( selectedValue);
+  localStorage.setItem('lng', this.selected);
+  this.navbar();
+}
+//navbar
+navbar(){
+  localStorage.setItem("nav","nav");
+  localStorage.removeItem("nav2");
+}
+
 }

@@ -52,7 +52,7 @@ export class PanierService {
     return this.http.delete(this.PaniersUrl + `/${_id}`);
   }
   updatepanier(emp) {
-    return this.http.put(this.PaniersUrl + `/${emp._id}`, emp);
+    return this.http.put(this.PaniersUrl + `/${emp.id}`, emp);
   }
 
 }

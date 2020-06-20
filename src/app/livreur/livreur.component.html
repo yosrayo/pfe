@@ -32,12 +32,12 @@
                                 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let m of liv">
                            
-                            <tr>
-                                <td>Ahmed ben salah </td>
+                            <tr >
+                                <td>{{m.nom}} {{m.prenom}}</td>
                                 <td >
-                                    <h5>Nabeul</h5>
+                                    <h5>{{m.adresse}}</h5>
                                 </td >
                                
                                 <td >
@@ -48,66 +48,7 @@
                                
                             </tr>
                         </tbody>
-                        <tbody>
-                            <tr>
-                                <td>Ali be ahmed</td>
-
-                                <td >
-                                    <h5>Mahdia</h5>
-                                </td>
-                               
-                                <td >
-                                    <star-rating value="" totalstars={{totalstar}} checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px"
-                                    readonly="false" (rate)="onRate($event)"></star-rating>
-                               </td>
-                            </tr>
-                           
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>Sami Belaazi</td>
-                                
-                                <td >
-                                    <h5>Tunis</h5>
-                                </td>
-                               
-                                <td >
-                                    <star-rating value="" totalstars={{totalstar}} checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px"
-                                    readonly="false" (rate)="onRate($event)"></star-rating>
-                               </td>
-                            </tr>
-                           
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>Alaa Rjab</td>
-                                
-                                <td >
-                                    <h5>Sfax</h5>
-                                </td>
-                               
-                                <td >
-                                    <star-rating value="" totalstars={{totalstar}} checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px"
-                                    readonly="false" (rate)="onRate($event)"></star-rating>
-                               </td>
-                            </tr>
-                           
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>Nadime Bahri</td>
-                                
-                                <td >
-                                    <h5>Sousse</h5>
-                                </td>
-                               
-                                <td >
-                                    <star-rating value="" totalstars={{totalstar}} checkedcolor="darkgoldenrod" uncheckedcolor="black" size="24px"
-                                    readonly="false" (rate)="onRate($event)"></star-rating>
-                               </td>
-                            </tr>
-                           
-                        </tbody>
+                       
                     </table>
                 </div>
                 

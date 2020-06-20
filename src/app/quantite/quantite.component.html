@@ -7,7 +7,7 @@
                 <div class="breadcrumb-text product-more">
                     <a [routerLink]="['/home']" routerLinkActive="router-link-active" ><i class="fa fa-home"></i> Home</a>
                     <a [routerLink]="['/shop']" routerLinkActive="router-link-active" ><i class="fa fa-shopping-cart"></i>Shop</a>
-                    <a [routerLink]="['/checkout']" routerLinkActive="router-link-active" ><i class="fas fa-money-check-alt"></i>ChekOut</a>
+                    <a [routerLink]="['/checkout']" routerLinkActive="router-link-active" ><i class="fa fa-money-check-alt"></i>ChekOut</a>
                     <span>Shopping Cart</span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" (ngModelChange)="m.p=m.quantite*m.prix" value="{{m.quantite}}">
+                                            <input type="text" [(ngModel)]="m.quantite" value="{{m.quantite}}">
                                         </div>
                                     </div>
                                 </td>
@@ -59,7 +59,7 @@
                     <div class="col-lg-4">
                         <div class="cart-buttons">
                             <a [routerLink]="['/shop']" routerLinkActive="router-link-active"  class="primary-btn continue-shop">Continue shopping</a>
-                            <a [routerLink]="['/checkout']" routerLinkActive="router-link-active"  class="primary-btn up-cart">Update cart</a>
+                            <a  class="primary-btn up-cart" (click)="updateCard()">Update cart</a>
                         </div>
                        
                     </div>

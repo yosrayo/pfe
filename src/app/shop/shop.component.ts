@@ -68,24 +68,29 @@ export class ShopComponent implements OnInit {
  //panier 
  pan(i){
  console.log(this.c[i]);
- this.panier.id_user= localStorage.getItem("id")
+ if(JSON.parse(localStorage.getItem('id'))!==null){
+ this.panier.id_user= JSON.parse(localStorage.getItem('id'));
  this.panier.nom_produit=this.c[i].nom_produit;
  this.panier.prix=this.c[i].prix;
 this.panier.photo=this.c[i].photo;
+this.panier.id_produit=this.c[i].id
  this.panier.quantite=1; 
 
  this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)}); 
  alert("ajouter avec succés");
  window.location.replace("shop");
  }
-
+ else{
+   alert("please connect")
+ }
+}
 //favoris
 
 fav(i){
   console.log(this.c[i]);
- this.favoris.id_user=5;
- this.favoris.id_produit=7;
-  this.favoris.nom_produit=this.c[i].nom_produit;
+ this.favoris.id_user=JSON.parse(localStorage.getItem('id'));
+ this.favoris.id_produit=this.c[i].id;
+  this.favoris.nom=this.c[i].nom;
   this.favoris.prix=this.c[i].prix;
  this.favoris.photo=this.c[i].photo;
  this.favoris.categorie=this.c[i].categorie;

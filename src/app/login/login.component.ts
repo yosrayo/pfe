@@ -16,35 +16,45 @@ export class LoginComponent implements OnInit {
   i:string;
   email: string;
   password: string;
+  id:number;
+  u = {} as any;
+  h: any;
   constructor(private router: Router,private userService:UserService) { }
  
   ngOnInit(): void {
     this.user= new User();
+    this.userService.getUsers().subscribe((res) => {
+      this.u = res;
+      
+    });
     this.getUsers();
+    console.log('rrrr' , this.u)
   }
 
   getUsers()
   {
-    this.userService.getUsers().subscribe(users => this.users = users);
-    console.log(this.users);
+    this.userService.getUsers().subscribe((res) => {
+      this.u = res;
+     
+    });
+  
     
   }
   connexion() {
-   
+    console.log('rrrr' , this.u)
   
-    for(let us of this.users)
+    for(let us of this.u)
     {
       console.log("loop");
       if((this.user.email==us.email)&&(this.user.mdp==us.mdp))
      { 
     this.b=true;
-      
-    
-    //localStorage.setItem("id",this.user.id.toString());
+      this.h = us ;
+    localStorage.setItem("id",JSON.stringify(this.h.id));
     window.location.replace("shop");
    
     localStorage.setItem("name",this.i);
-    localStorage.setItem("id", "");
+    
     
      }
     

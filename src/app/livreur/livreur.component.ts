@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StarRatingComponent } from 'ng-starrating';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-livreur',
@@ -8,9 +9,13 @@ import { StarRatingComponent } from 'ng-starrating';
 })
 export class LivreurComponent implements OnInit {
   totalstar = 5;
-  constructor() { }
+ liv = [] as any ;
+  constructor( private userService:UserService ) { }
 
   ngOnInit(): void {
+    this.userService .getUsers().subscribe((res) => {
+      this.liv = res;
+    });
   }
 
   

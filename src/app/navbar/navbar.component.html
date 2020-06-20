@@ -17,12 +17,16 @@
                  
               </a>
                 <div class="lan-selector">
-                    <select class="language_drop" name="countries" id="countries" style="width:300px;" >
-                        <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
-                            data-title="English">English</option>
-                        <option value='yu' data-image="assets\img\flag-2.png" data-imagecss="flag yu"
-                            data-title="Français" style="width: 300px;">Français </option>
-                    </select>
+                 <!-- <select class="language_drop" name="countries" id="countries" style="width:300px; "(change)="filterChanged($event.target.value)"  [value]='fr' ([ngModel])="selected" >
+                        <option  
+                         *ngFor="let lang of translate.getLangs()" value="{{lang}}">{{lang}}</option>
+                         
+                    </select>  
+             -->
+             <select (change)="filterChanged($event.target.value)"  [value]='fr' ([ngModel])="selected" style="width: 100px; border-color: white;" >
+                <option *ngFor="let lang of translate.getLangs()" value="{{lang}}" > {{lang}} </option>
+              </select>
+
                     </div>
                     
         
@@ -67,7 +71,7 @@
                         <li class="heart-icon">
                             <a [routerLink]="['/favoris']" routerLinkActive="router-link-active" >
                                 <i class="icon_heart_alt"></i>
-                                <span >1</span>
+                                <span >{{nemberFav()}}</span>
                             </a>
                         </li>
                         <li class="cart-icon">
@@ -112,38 +116,35 @@
         </div>
     </div>
 
-
-
-    <div class="nav-item " style="margin-top: -30px; height: 60px;">
-        <div class="container">
+    <!--navbar 2 français-->
+    <div class="nav-item " style=" height: 60px;" *ngIf="nav == 'nav'">
+        
             <div class="nav-depart ">
                 <div class="depart-btn">
                     
                     <i class="ti-menu"></i>
                     <span>All departments</span>
                     <ul class="depart-hover">
-                        <li class="active"><a [routerLink]="['/shop']" routerLinkActive="router-link-active" >Shop</a></li>
-                        <li > <a (click)="clothers()">Clothes</a> </li>
-                        <li><a (click)="beauty()">Beauty</a></li>
-                        <li><a (click)="baby()">Baby</a></li>
-                        <li><a (click)="food()"> Food</a></li>
-                       
+                    <li > <a (click)="clothers()">{{'navbar.Clo' | translate  }}</a> </li>
+                   <li><a (click)="beauty()">{{'navbar.Be' | translate  }}</a></li>
+                   <li><a (click)="baby()">{{'navbar.B' | translate  }}</a></li>
+                   <li><a (click)="food()"> {{'navbar.Fo' | translate  }}</a></li>
                     </ul>
                 </div>
             </div>
             <nav class="nav-menu mobile-menu">
                <ul>
-                    <li class="active" ><a routerLink="home" >Home</a></li>
-                    <li><a [routerLink]="['/shop']" routerLinkActive="router-link-active"  (click)="shop()" >Shop</a></li>
-                    <li><a routerLink="checkout">Checkout</a></li>    
-                    <li><a routerLink="register">Register</a></li>
-                    <li><a  routerLink="login">Login</a></li>
+                    <li class="active" ><a routerLink="home" >{{'navbar.Ho' | translate  }}</a></li>
+                    <li><a [routerLink]="['/shop']" routerLinkActive="router-link-active"  (click)="shop()"  >{{'navbar.Sh' | translate  }}</a></li>
+                    <li><a routerLink="checkout">{{'navbar.Chec' | translate  }}</a></li>    
+                    <li><a routerLink="register">{{'navbar.Reg' | translate  }}</a></li>
+                    <li><a  routerLink="login">{{'navbar.Lo' | translate  }}</a></li>
                     
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
-                            <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a></li>
-                            <li><a [routerLink]="['/livreur']" routerLinkActive="router-link-active" >List delivery men</a></li>
-                            <li><a [routerLink]="['/aboutus']" routerLinkActive="router-link-active" >About us</a></li>
+                            <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >{{'navbar.Contact' | translate  }}</a></li>
+                            <li><a [routerLink]="['/livreur']" routerLinkActive="router-link-active" >{{'navbar.List' | translate  }}</a></li>
+                            <li><a [routerLink]="['/aboutus']" routerLinkActive="router-link-active" >{{'navbar.About' | translate  }}</a></li>
                             
                         </ul>
                     </li>
@@ -152,6 +153,8 @@
             <div id="mobile-menu-wrap"></div>
            
                 
-        </div>
+        
     </div>
+<!-- fin navbar 2 français-->
+   
 </header>

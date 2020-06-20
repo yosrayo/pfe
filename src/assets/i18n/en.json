@@ -1,0 +1,23 @@
+
+{
+   
+    "navbar": {
+        "Home": "home ",
+        "Shop": "shop",
+        "Checkout": "CHECKOUT",
+        "Register": "register",
+        "Login": "login",
+        "Page": "PAGE",
+        "Contact": "CONTACT",
+        "Aboutus": "About us",
+        "List": "list of delivery men",
+        "Clothes": "Clothes",
+        "Baby": "Baby",
+        "Food": "Food",
+        "Beauty": "Beauty"
+       
+    }
+
+  
+
+}

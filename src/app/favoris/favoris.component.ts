@@ -30,7 +30,7 @@ export class FavorisComponent implements OnInit {
     
     } 
 
-    nember() {
+    nemberFav() {
       console.log("favnum",this.num);
           this.num = this.c.length;   
            return this.num;

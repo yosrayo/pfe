@@ -57,4 +57,11 @@ export class UserService {
       catchError(this.handleError<User>('delete'))
     );
   }
+
+  updateUser(emp) {
+    return this.http.put(this.UsersUrl + `/${emp.id}`, emp);
+  }
+  getuserbyId(id:number){
+    return this.http.get(this.UsersUrl +'/'+id)
+  }
 }
