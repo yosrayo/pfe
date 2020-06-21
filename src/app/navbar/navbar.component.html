@@ -119,10 +119,10 @@
     <!--navbar 2 français-->
     <div class="nav-item " style=" height: 60px;" *ngIf="nav == 'nav'">
         
-            <div class="nav-depart ">
-                <div class="depart-btn">
+            <div class="nav-depart " style="  margin-left: 30px;">
+                <div class="depart-btn" >
                     
-                    <i class="ti-menu"></i>
+                    <i class="ti-menu" ></i>
                     <span>All departments</span>
                     <ul class="depart-hover">
                     <li > <a (click)="clothers()">{{'navbar.Clo' | translate  }}</a> </li>
@@ -156,5 +156,42 @@
         
     </div>
 <!-- fin navbar 2 français-->
-   
+   <div class="nav-item " style="margin-top: -30px; height: 60px;">
+        <div class="container">
+            <div class="nav-depart ">
+                <div class="depart-btn">
+                    
+                    <i class="ti-menu"></i>
+                    <span>All departments</span>
+                    <ul class="depart-hover">
+                    <li > <a (click)="clothers()">{{'navbar.Clothes' | translate  }}</a> </li>
+                   <li><a (click)="beauty()">{{'navbar.Beauty' | translate  }}</a></li>
+                   <li><a (click)="baby()">{{'navbar.Baby' | translate  }}</a></li>
+                   <li><a (click)="food()"> Food</a></li>
+                    </ul>
+                </div>
+            </div>
+            <nav class="nav-menu mobile-menu">
+               <ul>
+                    <li class="active" ><a routerLink="home" >{{'navbar.Home' | translate  }}</a></li>
+                    <li><a [routerLink]="['/shop']" routerLinkActive="router-link-active"  (click)="shop()"  >{{'navbar.Shop' | translate  }}</a></li>
+                    <li><a routerLink="checkout">Checkout</a></li>    
+                    <li><a routerLink="register">Register</a></li>
+                    <li><a  routerLink="login">{{'navbar.Login' | translate  }}</a></li>
+                    
+                    <li><a href="#">Pages</a>
+                        <ul class="dropdown">
+                            <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >{{'navbar.Contact' | translate  }}</a></li>
+                            <li><a [routerLink]="['/livreur']" routerLinkActive="router-link-active" >{{'navbar.List' | translate  }}</a></li>
+                            <li><a [routerLink]="['/aboutus']" routerLinkActive="router-link-active" >{{'navbar.Aboutus' | translate  }}</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="mobile-menu-wrap"></div>
+           
+                
+        </div>
+    </div> 
 </header>

@@ -35,8 +35,8 @@ export class CheckOutComponent implements OnInit {
   today = new Date();
   client = [] as any ;
   idr:number;
-  trouve=0;
-  i = 0;
+ e: string;
+ m:string;
   constructor(private formBuilder: FormBuilder, private panierService:PanierService, private userService:UserService , private commandeService:CommandeService ) { }
 
   ngOnInit(): void {
@@ -63,46 +63,21 @@ export class CheckOutComponent implements OnInit {
       }}
 
   });
-  this.userService .getUsers().subscribe((res) => {
+  
+this.e=localStorage.getItem("e");
+this.m=localStorage.getItem("m");
+  this.userService.getUser(this.e,this.m).subscribe((res) => {
     this.client = res;
-   console.log("client0",this.client[0]);
-   console.log("client0",this.client[0].nom);
-   console.log("client0",this.client[0].id);
-   this.idr=localStorage.JSON.stringify("id") ;
-   console.log("idconn",this.idr)
+  
+   console.log("nn",this.client)
     
-     // if(localStorage.getItem("id_user") === us.id.toString())
+    
 
      
-     do {
-       if(this.client[this.i].id=== 10){
-        console.log("clienti",this.client[this.i].nom);
-        this.trouve=1;
-       }else{
-        this.i += 1;
-       }
-      
-       console.log(this.i);
-     } while (this.trouve==0);
-
   });
- // for(let us of this.users)
-//{
-  //console.log("loop");
-  //if(localStorage.getItem("id_user") === this.user.id.toString())
-//{
-       //this.lastName=this.user.prenom;
-      // this.firstName = this.user.nom;
-       //this.email = this.user.email;
-      // this.city = this.user.ville;
-      // this.country = this.user.pays;
-      // this.address = this.user.adresse;
-       //this.phone = this.user.telephone;
 
- // }
-//}
- //checkout formulaire
-
+ 
+ 
   }
   get f() { return this.checkout.controls; }
   onSubmit() {

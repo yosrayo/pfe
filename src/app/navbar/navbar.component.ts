@@ -35,6 +35,8 @@ export class NavbarComponent implements OnInit {
   
   ngOnInit(): void {
     this.nav = localStorage.getItem("nav");
+    this.navbar();
+    
     this.nember();
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
@@ -169,12 +171,13 @@ filterChanged(selectedValue: string) {
   console.log( this.selected);
   console.log( selectedValue);
   localStorage.setItem('lng', this.selected);
-  this.navbar();
+ 
+
 }
 //navbar
 navbar(){
-  localStorage.setItem("nav","nav");
-  localStorage.removeItem("nav2");
+  
+  localStorage.removeItem("nav");
 }
 
 }

@@ -35,6 +35,12 @@ export class UserService {
       catchError(this.handleError<User[]>('getUsers', []))
     );
   }
+  getUser (email:String, mdp:String): Observable<User[]> {
+    return this.http.get<User[]>(this.UsersUrl+'/'+email+'/'+mdp).pipe(
+      tap(_ => console.log('fetched Users')),
+      catchError(this.handleError<User[]>('getUsers', []))
+    );
+  }
   create(user: User): Observable<any> {
     return this.http.post<User>(this.UsersUrl, user, httpOptions).pipe(
       tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
@@ -64,4 +70,5 @@ export class UserService {
   getuserbyId(id:number){
     return this.http.get(this.UsersUrl +'/'+id)
   }
+
 }
