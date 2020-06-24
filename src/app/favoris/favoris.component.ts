@@ -19,11 +19,11 @@ export class FavorisComponent implements OnInit {
 
     this.favorisService.getFavoriss().subscribe((res) => {
       this.list = res;
-      console.log("listFv",this.list);
+     // console.log("listFv",this.list);
       for(let i = 0 ; i <= this.list.length ; i++) {
        if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
           this.c.push(this.list[i]);
-          console.log(" c " ,this.c);
+         // console.log(" c " ,this.c);
         }
       }
     });
@@ -31,7 +31,7 @@ export class FavorisComponent implements OnInit {
     } 
 
     nemberFav() {
-      console.log("favnum",this.num);
+      //console.log("favnum",this.num);
           this.num = this.c.length;   
            return this.num;
  

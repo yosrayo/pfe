@@ -51,8 +51,7 @@ export class LoginComponent implements OnInit {
     this.b=true;
       this.h = us ;
     localStorage.setItem("id",JSON.stringify(this.h.id));
-    localStorage.setItem("e",JSON.stringify(us.email));
-    localStorage.setItem("m",JSON.stringify(us.mdp));
+  
     window.location.replace("shop");
    
     localStorage.setItem("name",this.i);

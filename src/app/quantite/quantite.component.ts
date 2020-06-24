@@ -44,7 +44,8 @@ quan(){
   let total = 0;
   for (var i = 0; i < this.p.length; i++) {
       
-          total = this.p[i].quantite*this.p[i].prix;
+          total = this.p[i]
+          .quantite*this.p[i].prix;
           this.totalamount = total;
      
   }

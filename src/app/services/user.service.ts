@@ -41,6 +41,9 @@ export class UserService {
       catchError(this.handleError<User[]>('getUsers', []))
     );
   }
+  getUserId(id:number){
+    return this.http.get(this.UsersUrl+'/'+id)
+  }
   create(user: User): Observable<any> {
     return this.http.post<User>(this.UsersUrl, user, httpOptions).pipe(
       tap((newUser: User) => console.log(`added user w/ id=${newUser.id}`)),
@@ -67,8 +70,6 @@ export class UserService {
   updateUser(emp) {
     return this.http.put(this.UsersUrl + `/${emp.id}`, emp);
   }
-  getuserbyId(id:number){
-    return this.http.get(this.UsersUrl +'/'+id)
-  }
+ 
 
 }

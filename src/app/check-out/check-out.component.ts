@@ -7,6 +7,7 @@ import { UserService } from '../services/user.service';
 import { Commande } from '../classes/commande';
 import { CommandeService } from '../services/commande.service';
 
+
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
@@ -33,14 +34,16 @@ export class CheckOutComponent implements OnInit {
  totalamount:number;
   list1: User[];
   today = new Date();
-  client = [] as any ;
-  idr:number;
- e: string;
- m:string;
+  m:number;
+  client= [] as any ;
+  
+
   constructor(private formBuilder: FormBuilder, private panierService:PanierService, private userService:UserService , private commandeService:CommandeService ) { }
 
   ngOnInit(): void {
-    this.checkoutForm()
+    this.chek();
+    
+    //saisie de conrole
     this.checkout = this.formBuilder.group({
       phone: ['', Validators.required],
       city: ['', Validators.required],
@@ -53,6 +56,7 @@ export class CheckOutComponent implements OnInit {
   
       
   });
+  //affichage les produits de la panier 
   this.panierService.getPaniers().subscribe((res) => {
     this.list = res;
     console.log("listPanier",this.list);
@@ -64,22 +68,15 @@ export class CheckOutComponent implements OnInit {
 
   });
   
-this.e=localStorage.getItem("e");
-this.m=localStorage.getItem("m");
-  this.userService.getUser(this.e,this.m).subscribe((res) => {
-    this.client = res;
-  
-   console.log("nn",this.client)
-    
-    
 
-     
-  });
+
 
  
  
   }
+  //fontion de saisie de controle
   get f() { return this.checkout.controls; }
+  //pass commande et  update coordonnées user et controle
   onSubmit() {
     this.submitted = true;
    
@@ -109,21 +106,8 @@ this.m=localStorage.getItem("m");
 }
 
 
-checkoutForm(){
-this.userService.getUsers().subscribe((res) => {
-    this.list=res;
-    console.log("rrrrr" ,this.list)
-    for(let i =0 ; i<= this.list.length ; i++) {
-    if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
-      console.log("nnn" ,this.list)
-     this.list1= this.list[i] ;
-     console.log("nnn" ,this.list1)
-   }}
-   
-});
 
-}
-
+//passer la commande
 PasseCommande(){
   for(let u of this.p){
     this.commande.id_user= JSON.parse(localStorage.getItem('id'));
@@ -131,13 +115,13 @@ PasseCommande(){
      this.commande.date=this.today;
      this.commande.quantite=u.quantite;
     this.commandeService.create(this.commande).subscribe(commande=>{this.commandes.push(commande)}); 
-    
+    this.updateUser();
     
   }
   alert("ajouter avec succés");
   window.location.replace("shop");
 }
-
+//calcul quantite*prix
 quan(){
   let total = 1;
   for (var i = 0; i < this.p.length; i++) {
@@ -148,7 +132,7 @@ quan(){
   return total;
 
 }
-
+//calcul total
 getTotal() {
   let total = 0;
   for (var i = 0; i < this.p.length; i++) {
@@ -160,14 +144,21 @@ getTotal() {
   return total;
 }
 
-updateForm(form: NgForm) {
-  for(let i = 0 ; i <= this.p.length ; i++) {
-    if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
-  this.userService.updateUser(form.value).subscribe((res) => {
-   console.log('user');
+//client connecte
+chek(){
+  this.m=parseInt( localStorage.getItem('id'));
+   console.log('th',this.m);
+  this.userService.getUserId(this.m).subscribe((res) => {
+    this.client = res;
+  });
+}
+//update user s'il ya un changement dans les coordnnées
+updateUser() {
+  for(let i = 0 ; i <= this.client.length ; i++) {
+  this.userService.updateUser(this.client[i]).subscribe((res) => {
+   console.log('client' ,  this.client);
   });
 window.location.replace("checkout")
 }
-  }
 }
 }

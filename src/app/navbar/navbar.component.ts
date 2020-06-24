@@ -4,6 +4,7 @@ import { CategorieService } from '../services/categorie.service';
 import { Categorie } from '../classes/categorie';
 import { FavorisService } from '../services/favoris.service';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from '../services/user.service';
 
 
 
@@ -27,7 +28,9 @@ export class NavbarComponent implements OnInit {
   totalamount:number;
   num:number;
   nav:string;
-  constructor(public translate: TranslateService, private panierService:PanierService ,private categorieService: CategorieService, private favorisService:FavorisService ) { 
+  m:number;
+  client = [] as any ;
+  constructor(public translate: TranslateService, private userService:UserService ,private panierService:PanierService ,private categorieService: CategorieService, private favorisService:FavorisService ) { 
     translate.addLangs(['en' , 'fr' ]);
     translate.setDefaultLang('en');
 
@@ -56,7 +59,7 @@ export class NavbarComponent implements OnInit {
 
     this.favorisService.getFavoriss().subscribe((res) => {
       this.l = res;
-      console.log("listFv",this.l);
+      //console.log("listFv",this.l);
       for(let i = 0 ; i <= this.l.length ; i++) {
        if(localStorage.getItem("id") === this.l[i].id_user.toString()) {
           this.ll.push(this.l[i]);
@@ -176,8 +179,9 @@ filterChanged(selectedValue: string) {
 }
 //navbar
 navbar(){
-  
   localStorage.removeItem("nav");
 }
+
+
 
 }
