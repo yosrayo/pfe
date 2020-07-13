@@ -56,22 +56,19 @@ export class CheckOutComponent implements OnInit {
   
       
   });
-  //affichage les produits de la panier 
-  this.panierService.getPaniers().subscribe((res) => {
-    this.list = res;
-    console.log("listPanier",this.list);
-    for(let i = 0 ; i < this.list.length ; i++) {
-     if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
-        this.p.push(this.list[i]);
-        console.log(" p " ,this.p);
-      }}
-
-  });
-  
-
-
-
  
+  	
+ //affichage les produits de la panier 
+ this.panierService.getPaniers().subscribe((res) => {
+  this.list = res;
+  console.log("listPanier",this.list);
+  for(let i = 0 ; i < this.list.length ; i++) {
+   if(localStorage.getItem("id") === this.list[i].id_user.toString()) {
+      this.p.push(this.list[i]);
+      console.log(" p " ,this.p);
+    }}
+
+});
  
   }
   //fontion de saisie de controle
@@ -95,7 +92,7 @@ export class CheckOutComponent implements OnInit {
     console.log(this.checkout.value);
     }
 
-   
+   return this.submitted;
     
  
 } 
@@ -109,18 +106,22 @@ export class CheckOutComponent implements OnInit {
 
 //passer la commande
 PasseCommande(){
+ 
+  this.updateUser();
   for(let u of this.p){
+    if(this.onSubmit()){
     this.commande.id_user= JSON.parse(localStorage.getItem('id'));
     this.commande.id_produit=u.id_produit;
      this.commande.date=this.today;
      this.commande.quantite=u.quantite;
+     this.commande.etat="En attente"
     this.commandeService.create(this.commande).subscribe(commande=>{this.commandes.push(commande)}); 
-    this.updateUser();
+    
     
   }
   alert("ajouter avec succés");
   window.location.replace("shop");
-}
+}}
 //calcul quantite*prix
 quan(){
   let total = 1;
@@ -144,7 +145,7 @@ getTotal() {
   return total;
 }
 
-//client connecte
+//afficher form client connecte :get by id
 chek(){
   this.m=parseInt( localStorage.getItem('id'));
    console.log('th',this.m);

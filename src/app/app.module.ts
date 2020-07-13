@@ -23,6 +23,7 @@ import { TranslateModule , TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   // tslint:disable-next-line:no-unused-expression
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AboutusComponent,
     FavorisComponent,
     ResetPassComponent,
+  
     
   ],
   imports: [

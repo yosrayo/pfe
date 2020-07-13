@@ -70,10 +70,10 @@ export class ShopComponent implements OnInit {
  console.log(this.c[i]);
  if(JSON.parse(localStorage.getItem('id'))!==null){
  this.panier.id_user= JSON.parse(localStorage.getItem('id'));
- this.panier.nom_produit=this.c[i].nom_produit;
- this.panier.prix=this.c[i].prix;
-this.panier.photo=this.c[i].photo;
-this.panier.id_produit=this.c[i].id
+ this.panier.nom_produit=this.list[i].nom_produit;
+ this.panier.prix=this.list[i].prix;
+this.panier.photo=this.list[i].photo;
+this.panier.id_produit=this.list[i].id
  this.panier.quantite=1; 
 
  this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)}); 

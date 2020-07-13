@@ -11,10 +11,10 @@
                     +116 31 597 990
                 </div>
             </div>
-            <div class="ht-right" >
+            <div class="ht-right "  >
                 <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i>Login</a>
-                <a href="#" class="login-panel" (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> Logout 
-                 
+                <a href="#" class="login-panel " type="button"   (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> Logout 
+                    
               </a>
                 <div class="lan-selector">
                  <!-- <select class="language_drop" name="countries" id="countries" style="width:300px; "(change)="filterChanged($event.target.value)"  [value]='fr' ([ngModel])="selected" >

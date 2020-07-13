@@ -53,6 +53,7 @@ this.userService.getUsers().subscribe((res) => {
 
     onSubmit() {
       this.exist=false;
+      
         this.submitted = true;
 
         // stop here if form is invalid
