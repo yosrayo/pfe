@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="ht-right "  >
-                <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i>Login</a>
-                <a href="#" class="login-panel " type="button"   (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> Logout 
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="login-panel" *ngIf="!c()"><i class="fa fa-user-circle"></i>{{'navbar.con' | translate  }}</a>
+                <a href="#" class="login-panel " type="button"   (click)="logout()"  *ngIf="c()"><i class="fa fa-user-circle"></i> {{'navbar.dec' | translate  }}
                     
               </a>
                 <div class="lan-selector">
@@ -54,12 +54,12 @@
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
                      <button type="button" class="category-btn  "  >
-                         All Categories    
+                        {{'navbar.cat' | translate  }}   
                     </button>
                        
                     
                         <div class="input-group"  >
-                            <input class="input-group-prepend" type="text" placeholder="What do you need?">
+                            <input class="input-group-prepend" type="text" placeholder="{{'navbar.need' | translate  }}" [(ngModel)]="term">
                             <button type="button" ><i class="ti-search"  ></i></button>
                             
                         </div>
@@ -79,12 +79,12 @@
                                 <i class="icon_bag_alt"></i>
                                 <span >{{ nember() }}</span>
                             </a>
-                            <div class="cart-hover" *ngFor="let m of p">
+                            <div class="cart-hover" *ngFor="let m of p|filter:term">
                                 <div class="select-items" >
                                     <table>
                                         <tbody>
-                                            <tr *ngFor="let m of p">
-                                                <td class="si-pic">{{m.photo}}</td>
+                                            <tr *ngFor="let m of p|filter:term">
+                                                <td class="si-pic"><img src="{{m.photo}}" style="width: 50px;"></td>
                                                 <td class="si-text">
                                                     <div class="product-selected">
                                                         <p >{{m.prix}}DT</p>
@@ -117,18 +117,19 @@
     </div>
 
     <!--navbar 2 français-->
-    <div class="nav-item " style=" height: 60px;" *ngIf="nav == 'nav'">
+    <div class="nav-item " style=" height: 60px;" *ngIf="lan == 'fr'">
         
             <div class="nav-depart " style="  margin-left: 30px;">
                 <div class="depart-btn" >
                     
                     <i class="ti-menu" ></i>
-                    <span>All departments</span>
+                    <span>{{'navbar.dep' | translate  }}</span>
                     <ul class="depart-hover">
-                    <li > <a (click)="clothers()">{{'navbar.Clo' | translate  }}</a> </li>
+                <li > <a (click)="clothers()">{{'navbar.Clo' | translate  }}</a> </li>
                    <li><a (click)="beauty()">{{'navbar.Be' | translate  }}</a></li>
                    <li><a (click)="baby()">{{'navbar.B' | translate  }}</a></li>
                    <li><a (click)="food()"> {{'navbar.Fo' | translate  }}</a></li>
+                 
                     </ul>
                 </div>
             </div>
@@ -155,8 +156,8 @@
                 
         
     </div>
-<!-- fin navbar 2 français-->
-   <div class="nav-item " style="margin-top: -30px; height: 60px;">
+<!-- fin navbar englais-->
+   <div class="nav-item " style="margin-top: -30px; height: 60px;" *ngIf="lan == 'en'"> 
         <div class="container">
             <div class="nav-depart ">
                 <div class="depart-btn">
@@ -165,9 +166,10 @@
                     <span>All departments</span>
                     <ul class="depart-hover">
                     <li > <a (click)="clothers()">{{'navbar.Clothes' | translate  }}</a> </li>
-                   <li><a (click)="beauty()">{{'navbar.Beauty' | translate  }}</a></li>
+                  <li><a (click)="beauty()">{{'navbar.Beauty' | translate  }}</a></li>
                    <li><a (click)="baby()">{{'navbar.Baby' | translate  }}</a></li>
-                   <li><a (click)="food()"> Food</a></li>
+                   <li><a (click)="food()"> {{'navbar.food' | translate  }}</a></li> 
+                   
                     </ul>
                 </div>
             </div>

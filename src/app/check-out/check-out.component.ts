@@ -36,6 +36,7 @@ export class CheckOutComponent implements OnInit {
   today = new Date();
   m:number;
   client= [] as any ;
+  clients= {} as any ;
   
 
   constructor(private formBuilder: FormBuilder, private panierService:PanierService, private userService:UserService , private commandeService:CommandeService ) { }
@@ -52,11 +53,18 @@ export class CheckOutComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-     
+      
   
       
   });
- 
+  this.clients = JSON.parse(localStorage.getItem("user"));
+  this.firstName = this.clients.nom;
+  this.lastName = this.clients.prenom;
+  this.email = this.clients.email;
+  this.city = this.clients.ville;
+  this.country = this.clients.pays ;
+  this.address = this.clients.adresse ;
+  this.phone = this.clients.telephone ;
   	
  //affichage les produits de la panier 
  this.panierService.getPaniers().subscribe((res) => {
@@ -75,7 +83,7 @@ export class CheckOutComponent implements OnInit {
   get f() { return this.checkout.controls; }
   //pass commande et  update coordonnées user et controle
   onSubmit() {
-    this.submitted = true;
+    /*this.submitted = true;
    
    
     if (this.checkout.invalid) {
@@ -92,7 +100,7 @@ export class CheckOutComponent implements OnInit {
     console.log(this.checkout.value);
     }
 
-   return this.submitted;
+   return this.submitted;*/
     
  
 } 
@@ -107,21 +115,25 @@ export class CheckOutComponent implements OnInit {
 //passer la commande
 PasseCommande(){
  
-  this.updateUser();
+  
   for(let u of this.p){
-    if(this.onSubmit()){
+    
     this.commande.id_user= JSON.parse(localStorage.getItem('id'));
     this.commande.id_produit=u.id_produit;
      this.commande.date=this.today;
      this.commande.quantite=u.quantite;
      this.commande.etat="En attente"
     this.commandeService.create(this.commande).subscribe(commande=>{this.commandes.push(commande)}); 
-    
-    
+    this.onDelete();
+   
+
+
+
   }
   alert("ajouter avec succés");
   window.location.replace("shop");
-}}
+  
+}
 //calcul quantite*prix
 quan(){
   let total = 1;
@@ -155,11 +167,30 @@ chek(){
 }
 //update user s'il ya un changement dans les coordnnées
 updateUser() {
-  for(let i = 0 ; i <= this.client.length ; i++) {
-  this.userService.updateUser(this.client[i]).subscribe((res) => {
-   console.log('client' ,  this.client);
+  this.client.nom = this.firstName;
+  this.client.prenom =this.lastName;
+  this.client.email =this.email;
+  this.client.ville =this.city;
+  this.client.pays =this.country;
+  this.client.adresse =this.address;
+  this.client.telephone =this.phone;
+  this.userService.updateUser(this.client).subscribe((res) => {
   });
+  localStorage.setItem("user", JSON.stringify(this.client));
 window.location.replace("checkout")
 }
-}
+// vider panier
+onDelete() {
+  //if (confirm('Voulez-vous vraiment supprimer ce produit ?') === true) {
+  for(let i = 0 ; i < this.p.length; i++) {
+      this.panierService.deletePanier(this.p[i].id).subscribe((res) => {
+        this.ngOnInit();
+      });
+    }
+  
+     // window.location.replace("quantite");
+    
+    }
+    
+//}
 }

@@ -6,7 +6,7 @@
         "Sh": "boutique",
         "Chec": "CHECKOUT",
         "Reg": "s'INSCRIRE",
-        "Lo": "s'identifier",
+        "Lo": "s'authentifier",
         "Pa": "PAGES",
         "Cont": "Contact",
         "About": "A propos de nous",
@@ -14,13 +14,65 @@
         "Clo": "Vetement",
         "B": "Bébes",
         "Fo": "Alimentation",
-        "Be": "Beauté"
-       
+        "Be": "Beauté",
+        "dep":"Depertements",
+        "cat":"Les catégories",
+        "need":"De quoi avez-vous besoin?",
+        "con":"Connexion",
+        "dec":"Deconnexion"
+         
+    },
+    "register":{
+        "first":"Nom",
+        "last":"Prénom",
+        "phone":"Numero de telephone",
+        "city":"Ville",
+        "country":"Pays",
+        "adress":"Adresse",
+        "email":"Email",
+        "pass":"Mot de passe",
+        "valid":"Confirmer mot de passe",
+        "accept":" Accepter termes et conditions",
+        "rgister":"s'inscrire",
+        "reset":"Annuler",
+        "login":"Ou s'authentifier",
+        "home":"Accueil"
+        
+
+    },
+    "login": {
+        "home":"Accueil",
+        "log":"S'authentifier",
+        "email":"Adresse email *",
+        "pass":"Mot de passe *",
+        "pass2":"Enregistrer",
+        "forgot":"Oublier mot d passe",
+        "sign":"Connexion",
+        "account":"Créer un nouveau compte"
+    },
+
+    "contact":{
+        "home":"Accueil",
+        "con":"contact",
+        "us":"Contactez nous",
+        "adress":"Adresse:",
+        "rue":"Tunisia Tunis avenue Habib Bourguiba ",
+        "phone":"Telephone:",
+        "l":" Laissez un commentaire",
+        "staf":"Notre personnel vous rappellera plus tard et répondra à vos questions.",
+        "message":"envoyer un message"
+    },
+    "shop":{
+        "home":"Accueil",
+        "Clo":"Vetement",
+        "bb":"Bébes",
+        "bo":"Beauté",
+        "al":"Alimentation",
+        "panier":"Ajouter au panier",
+        "shopping":"Achats"
     }
 
-
-
-
+    
 
 
 

@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  ><i class="fa fa-home"></i> Home</a>
-                    <span>Register</span>
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active"  ><i class="fa fa-home"></i> {{'register.home' | translate  }}</a>
+                    <span>{{'register.rgister' | translate  }}</span>
                 </div>
             </div>
         </div>
@@ -18,18 +18,18 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="register-form">
-                    <h2><i class="fa fa-address-book"></i>Register</h2>
+                    <h2><i class="fa fa-address-book"></i>{{'register.rgister' | translate  }}</h2>
                     <form action="#" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                         <div class="row">
                         <div class="group-input col-lg-6">
-                            <label for="username">First name</label>
+                            <label for="username">{{'register.first' | translate  }}</label>
                             <input type="text" id="" [(ngModel)]="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"   style="border-radius: 10px;">
                             <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div>
                         </div>
                         <div class="group-input col-lg-6">
-                            <label for="username">Last name</label>
+                            <label for="username">{{'register.last' | translate  }}</label>
                             <input type="text" id="" [(ngModel)]="lastName"  formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"  style="border-radius: 10px;">
                             <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -38,27 +38,28 @@
                        
                     </div>
                     <div class="group-input">
-                        <label for="address">Phone number</label>
+                        <label for="address">{{'register.phone' | translate  }}</label>
                         <input type="number" id="" [(ngModel)]="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"  style="border-radius: 10px;">
                         <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                             <div *ngIf="f.phone.errors.required">Phone number is required</div>
                         </div>
                     </div>
                     <div class="group-input">
-                        <label>Town/City</label>
+                        <label>{{'register.city' | translate  }}</label>
                         <select formControlName="city" [(ngModel)]="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }" style="border-radius: 10px;height: 50px;">
-                            <option value=""></option>
-                            <option value="Mr">Mr</option>
-                            <option value="Mrs">Mrs</option>
-                            <option value="Miss">Miss</option>
-                            <option value="Ms">Ms</option>
+                            <option value="Nabeul">Nabeul</option>
+                            <option value="Mahdia">Mahdia</option>
+                            <option value="Gabes">Gabes</option>
+                            <option value="Sfax">Sfax</option>
+                            <option value="Monastir">Monastir</option>
+                            <option value="Tunis">Tunis</option>
                         </select>
                         <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                             <div *ngIf="f.city.errors.required">Toun/City is required</div>
                         </div>
                     </div>
                     <div class="group-input">
-                        <label>Country</label>
+                        <label>{{'register.country' | translate  }}</label>
                         <select formControlName="country" [(ngModel)]="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" style="border-radius: 10px; height: 50px;">
                             <option value=""></option>
                             <option value="Mr">Tunisia</option>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                         <div class="group-input">
-                            <label for="address">Address</label>
+                            <label for="address">{{'register.adress' | translate  }}</label>
                             <input type="text" id="" [(ngModel)]="address" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"  style="border-radius: 10px;">
                             <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                                 <div *ngIf="f.address.errors.required">address is required</div>
@@ -80,7 +81,7 @@
                        
                       
                     <div class="group-input">
-                        <label for="email">Email</label>
+                        <label for="email">{{'register.email' | translate  }}</label>
                         <input type="text"[(ngModel)]="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" style="border-radius: 10px;"/>
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Email is required</div>
@@ -89,7 +90,7 @@
                     </div>
                     <div class="row">
                         <div class="group-input col-lg-6">
-                            <label for="pass">Password</label>
+                            <label for="pass">{{'register.pass' | translate  }}</label>
                             <input type="password" [(ngModel)]="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required">Password is required</div>
@@ -97,7 +98,7 @@
                             </div>
                         </div>
                         <div class="group-input col-lg-6">
-                            <label for="con-pass">confirm Password</label>
+                            <label for="con-pass">{{'register.valid' | translate  }}</label>
                             <input type="password" [(ngModel)]="confirmPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
                             <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                                 <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
@@ -107,15 +108,15 @@
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox"  formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <label for="acceptTerms" class="form-check-label">{{'register.accept' | translate  }}</label>
                         <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
                     </div>
                     
-                        <button type="submit" class="site-btn register-btn"   style="border-radius: 10px;">REGISTER</button>
-                        <button type="reset" class="site-btn register-btn" onclick="onReset()"  style="border-radius: 10px;">CANCEL</button>
+                        <button type="submit" class="site-btn register-btn"   style="border-radius: 10px;">{{'register.rgister' | translate  }}</button>
+                        <button type="reset" class="site-btn register-btn" onclick="onReset()"  style="border-radius: 10px;">{{'register.reset' | translate  }}</button>
                     </form>
                     <div class="switch-login">
-                        <a  [routerLink]="['login']" routerLinkActive="router-link-active"  class="or-login">Or Login</a>
+                        <a  [routerLink]="['login']" routerLinkActive="router-link-active"  class="or-login">{{'register.login' | translate  }}</a>
                     </div>
                 </div>
             </div>

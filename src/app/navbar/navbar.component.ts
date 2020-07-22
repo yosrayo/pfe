@@ -5,7 +5,8 @@ import { Categorie } from '../classes/categorie';
 import { FavorisService } from '../services/favoris.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../services/user.service';
-
+import { ProduitService } from '../services/produit.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @Component({
@@ -20,14 +21,17 @@ export class NavbarComponent implements OnInit {
   l = [] as any ;
   p = [] as any ;
   ll = [] as any ;
+  term;
   loc: string;
- cat = [] as any ;
+ //cat = [] as any ;
+ cat:Categorie[];
  selected: string;
  fr = 'fr';
   categorie:Categorie;
   totalamount:number;
   num:number;
   nav:string;
+  lan: string;
   m:number;
   client = [] as any ;
   constructor(public translate: TranslateService, private userService:UserService ,private panierService:PanierService ,private categorieService: CategorieService, private favorisService:FavorisService ) { 
@@ -37,10 +41,20 @@ export class NavbarComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.cat=[];
+    this.getcats();
     this.nav = localStorage.getItem("nav");
-    this.navbar();
-    
+    this.lan = 'en';
+    //this.navbar();
     this.nember();
+    this.nemberFav();
+    //this.cat[0]="test";
+   /* this.categorieService.getCategories().subscribe( (res) => {
+      this.cat = res;
+    
+    });*/
+  
+    //affichage de contenu de panier
     this.panierService.getPaniers().subscribe((res) => {
       this.list = res;
       console.log("listPanier",this.list);
@@ -49,17 +63,16 @@ export class NavbarComponent implements OnInit {
           this.p.push(this.list[i]);
           console.log(" p " ,this.p);
         }}
-  
+      
     
 
     });
-    this.categorieService .getCategories().subscribe((res) => {
-      this.cat = res;
-    });
-
+//get categorie
+   
+    console.log("cate",this.cat);
+//get list favoris
     this.favorisService.getFavoriss().subscribe((res) => {
       this.l = res;
-      //console.log("listFv",this.l);
       for(let i = 0 ; i <= this.l.length ; i++) {
        if(localStorage.getItem("id") === this.l[i].id_user.toString()) {
           this.ll.push(this.l[i]);
@@ -67,7 +80,7 @@ export class NavbarComponent implements OnInit {
         }
       }
     });
-this.nemberFav();
+
   }
 
   nemberFav() {
@@ -84,6 +97,11 @@ this.nemberFav();
     localStorage.removeItem("bb");
     localStorage.removeItem("beauty");
 
+  }
+  getcats()
+  {
+    this.categorieService.getCategories().subscribe(cat => this.cat = cat);
+    console.log("liste cat",this.cat);
   }
   beauty() {
     localStorage.setItem("beauty","beauty");
@@ -128,7 +146,7 @@ this.nemberFav();
   insta(){
     window.open('https://www.instagram.com/polpo.shop/');
   }
-
+//cc
   c() {
     if(localStorage.getItem('name') === '') {
       return false;
@@ -136,13 +154,15 @@ this.nemberFav();
       return true;
     }
   }
+  //llogout
   logout() {
     window.location.replace("login");
     localStorage.setItem("name","");;
     localStorage.removeItem("id");
+    
   }
 
-
+//total panier
   getTotal() {
     let total = 0;
     for (var i = 0; i < this.p.length; i++) {
@@ -153,6 +173,7 @@ this.nemberFav();
     }
     return total;
 }
+//compteur panier
 nember() {
           this.num = this.p.length;   
   return this.num;
@@ -174,12 +195,17 @@ filterChanged(selectedValue: string) {
   console.log( this.selected);
   console.log( selectedValue);
   localStorage.setItem('lng', this.selected);
+  if(this.selected == "fr") {
+    this.lan = 'fr'
+  } else {
+    this.lan = 'en'
+  }
  
 
 }
 //navbar
 navbar(){
-  localStorage.removeItem("nav");
+  // localStorage.removeItem("nav");
 }
 
 

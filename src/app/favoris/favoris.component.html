@@ -29,14 +29,14 @@
                        
                         <div class="col-lg-4 col-sm-6" *ngFor="let m of c"  >
                             <div class="product-item">
-                                <div class="pi-pic">
-                                    {{m.photo}}
+                                <div class="pi-pic"style="width: 300px; height: 300px;">
+                                    <img src="{{m.photo}}">
                                     <div class="icon" >
                                         <i class="ti-close" (click)="onDelete(m.id)"></i>
                                     </div>
                                     <ul>
                                         <li class="w-icon active"><a><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a >+ Add to basket</a></li>
+                                        <li class="quick-view"><a (click)="pan(m)" >+ Add to basket</a></li>
                                     </ul>
                                 </div>
                                 <div class="pi-text">

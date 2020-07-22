@@ -24,19 +24,27 @@ export class ShopComponent implements OnInit {
   favoris = {} as any;
   favoriss: Favoris[] ;
   list = [] as any ;
+  listF= [] as any
   c = [] as any;
   b = [] as any;
   f = [] as any;
   be = [] as any;
+  exist: boolean;
+
 
   
   constructor(private produitService:ProduitService, private panierService:PanierService , private favorisService: FavorisService) { }
 
   
   ngOnInit(): void {
+ 
+    //get de localStorage variable clo
     this.clo = localStorage.getItem("clo");
+    //get de localStorage variable food
     this.food = localStorage.getItem("food");
+    //get de localStorage variable food
     this.bb = localStorage.getItem("bb");
+    //get de localStorage variable beauty
     this.beauty = localStorage.getItem("beauty");
     //lire produit de la base
     this.produitService.getProduits().subscribe((res) => {
@@ -61,23 +69,32 @@ export class ShopComponent implements OnInit {
         }}
     });
     
-    
+    this.favorisService.getFavoriss().subscribe((res) => {
+      this.listF = res;
+      console.log("listFv",this.listF);
+      for(let i = 0 ; i <= this.listF.length ; i++) {
+       if(localStorage.getItem("id") === this.listF[i].id_user.toString()) {
+          this.c.push(this.listF[i]);
+          console.log(" c " ,this.c);
+        }
+      }
+    });
   
   }
  
  //panier 
- pan(i){
- console.log(this.c[i]);
+ pan(m){
+ 
  if(JSON.parse(localStorage.getItem('id'))!==null){
  this.panier.id_user= JSON.parse(localStorage.getItem('id'));
- this.panier.nom_produit=this.list[i].nom_produit;
- this.panier.prix=this.list[i].prix;
-this.panier.photo=this.list[i].photo;
-this.panier.id_produit=this.list[i].id
+ this.panier.nom_produit= m.nom_produit;
+ this.panier.prix= m.prix;
+this.panier.photo= m.photo;
+this.panier.id_produit=m.id
  this.panier.quantite=1; 
 
  this.panierService.create(this.panier).subscribe(panier=>{this.paniers.push(panier)}); 
- alert("ajouter avec succés");
+ alert("Add to basket");
  window.location.replace("shop");
  }
  else{
@@ -86,19 +103,29 @@ this.panier.id_produit=this.list[i].id
 }
 //favoris
 
-fav(i){
-  console.log(this.c[i]);
- this.favoris.id_user=JSON.parse(localStorage.getItem('id'));
- this.favoris.id_produit=this.c[i].id;
-  this.favoris.nom=this.c[i].nom;
-  this.favoris.prix=this.c[i].prix;
- this.favoris.photo=this.c[i].photo;
- this.favoris.categorie=this.c[i].categorie;
-
+fav(m){
   
- 
+  
+ this.favoris.id_user=JSON.parse(localStorage.getItem('id'));
+ this.favoris.id_produit=m.id;
+  this.favoris.nom=m.nom_produit;
+  this.favoris.prix=m.prix;
+ this.favoris.photo=m.photo;
+ this.favoris.categorie=m.categorie;
+
   this.favorisService.create(this.favoris).subscribe(favoris=>{this.favoriss.push(favoris)}); 
-  alert("ajouter avec succés");
+  alert("Add to favorites");
+
   window.location.replace("shop");
+}
+
+//delete favoris
+onDelete(_id: string) {
+  if (confirm('remove product from favorite ?') === true) {
+    this.favorisService.deleteFavoris(_id).subscribe((res) => {
+      this.ngOnInit();
+    });
+    window.location.replace("shop");
+  }
 }
 }

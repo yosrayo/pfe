@@ -17,7 +17,7 @@
 
 <section class="checkout-section spad">
     <div class="container">
-        <form action="#" class="checkout-form" #Form="ngForm" [formGroup]="checkout" (ngSubmit)="onSubmit()">
+        <form action="#" class="checkout-form" #Form="ngForm" [formGroup]="checkout" (ngSubmit)="PasseCommande()">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="checkout-content">
@@ -27,14 +27,14 @@
                     <div class="row" >
                         <div class="col-lg-6">
                             <label for="fir">First Name<span>*</span></label>
-                            <input type="text" id="fir" [(ngModel)]="firstName" formControlName="firstName" value="{{client.nom}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" >
+                            <input type="text" id="fir" [(ngModel)]="firstName" formControlName="firstName"  class="form-control" name="firstName"  >
                             <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <label for="last">Last Name<span>*</span></label>
-                            <input type="text" id="last" [(ngModel)]="lastName" value="{{lastName}} "formControlName="lastName" value="{{client.prenom}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                            <input type="text" id="last" [(ngModel)]="lastName" value="{{lastName}} "formControlName="lastName"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
                             <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                             </div>
@@ -42,21 +42,21 @@
                         
                         <div class="col-lg-12">
                             <label for="cun">Country<span>*</span></label>
-                            <input type="text" id="cun" [(ngModel)]="country" formControlName="country" value="{{client.pays}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                            <input type="text" id="cun" [(ngModel)]="country" formControlName="country"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
                             <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                                 <div *ngIf="f.country.errors.required">Country is required</div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <label for="town">Town / City<span>*</span></label>
-                            <input type="text" id="town" [(ngModel)]="city" formControlName="city" value="{{client.ville}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                            <input type="text" id="town" [(ngModel)]="city" formControlName="city"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
                             <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                                 <div *ngIf="f.city.errors.required">Toun/City is required</div>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <label for="street">Street Address<span>*</span></label>
-                            <input type="text" id="street" [(ngModel)]="address" class="street-first" value="{{client.adresse}}" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+                            <input type="text" id="street" [(ngModel)]="address" class="street-first"  formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
                             <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                                 <div *ngIf="f.address.errors.required">address is required</div>
                             </div>
@@ -66,7 +66,7 @@
                         
                         <div class="col-lg-6">
                             <label for="email">Email Address<span>*</span></label>
-                            <input type="text" id="email" [(ngModel)]="email" formControlName="email" value="{{client.email}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <input type="text" id="email" [(ngModel)]="email" formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
                                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -74,12 +74,14 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="phone">Phone<span>*</span></label>
-                            <input type="text" id="phone" [(ngModel)]="phone" formControlName="phone"value="{{client.telephone}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                            <input type="text" id="phone" [(ngModel)]="phone" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
                             <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.phone.errors.required">Phone number is required</div>
                             </div>
                         </div>
-                        
+                        <div class="col-lg-12 text-center">
+                            <button type="button" class="site-btn place-btn " (click)="updateUser()" style="background-color: #e7ab3c; width: 400px;border-color: #e7ab3c; border-radius: 10px;">Update</button>
+                        </div>
                     </div>
                 </div>
 

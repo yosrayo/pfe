@@ -8,16 +8,68 @@
         "Register": "register",
         "Login": "login",
         "Page": "PAGE",
-        "Contact": "CONTACT",
+        "Contact": "Contact",
         "Aboutus": "About us",
         "List": "list of delivery men",
         "Clothes": "Clothes",
         "Baby": "Baby",
         "Food": "Food",
-        "Beauty": "Beauty"
-       
-    }
+        "Beauty": "Beauty",
+        "cat":" All Categories",
+        "need":"What do you need?",
+        "con":"Login",
+        "dec":"Logout"
 
+       
+    },
+    "register":{
+        "first":"First name",
+        "last":"Last name",
+        "phone":"Phone number",
+        "city":"City",
+        "country":"Country",
+        "adress":"Address",
+        "email":"Email",
+        "pass":"Password",
+        "valid":"Confirm password",
+        "accept":" Accept terms & conditions",
+        "rgister":"register",
+        "reset":"Reset",
+        "login":"Or login",
+        "home":"Home"
+    
+    },
+    "login": {
+        "home":"Home",
+        "log":"Login",
+        "email":"mail address *",
+        "pass":"Password *",
+        "pass2":"Save Password",
+        "forgot":"Forget your Password",
+        "sign":"Sign In",
+        "account":"Or Create An Account"
+    },
+"contact":{
+    "home":"Home",
+    " con":"contact",
+    "us":"Contacts Us",
+    "adress":"Address:",
+    "rue":"Tunisia Tunis  Habib Bourguiba street",
+    "phone":"Phone:",
+    "l":"Leave A Comment",
+    "staf":"Our staff will call back later and answer your questions.",
+    "message":"Send message"
+},
+"shop":{
+    "home":"Home",
+    "Clo":"Clothers",
+    "bb":"baby",
+    "bo":"Beauty",
+    "al":"Food",
+    "panier":"Add to basket",
+    "shopping":"Shopping"
+    
+}
   
 
 }

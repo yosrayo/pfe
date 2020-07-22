@@ -40,15 +40,10 @@ export class QuantiteComponent implements OnInit {
   }
 
   //calculer somme produits
-quan(){
+quan(p){
   let total = 0;
-  for (var i = 0; i < this.p.length; i++) {
-      
-          total = this.p[i]
-          .quantite*this.p[i].prix;
-          this.totalamount = total;
-     
-  }
+   total = p.quantite*p.prix;
+   this.totalamount = total;
   return total;
 
 }
@@ -57,7 +52,7 @@ quan(){
 somme() {
   let total = 0;
   for (var i = 0; i < this.p.length; i++) {
-          total += this.quan();
+    total += this.p[i].quantite*this.p[i].prix;
           this.totalamount = total;
   }
   return total;

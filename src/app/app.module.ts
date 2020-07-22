@@ -21,7 +21,7 @@ import { FavorisComponent } from './favoris/favoris.component';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { TranslateModule , TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule ,
     NgSearchPipe , 
     RatingModule,
+    Ng2SearchPipeModule,
     HttpClientModule ,
     TranslateModule.forRoot({
       loader: {

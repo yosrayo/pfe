@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th class="p-name">Product Name</th>
+                                <th >Product Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
@@ -36,11 +36,11 @@
                         <tbody>
                            
                             <tr *ngFor="let m of p">
-                                <td class="cart-pic">{{m.photo}}</td>
-                                <td class="cart-title">
+                                <td class="cart-pic"  style="width: 100px; "><img src="{{m.photo}}"></td>
+                                <td >
                                     <h5>{{m.nom_produit}}</h5>
                                 </td>
-                                <td class="p-price">{{m.prix}}DT</td>
+                                <td class="p-price">{{m.prix}} DT</td>
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="total-price"  >{{quan()}}DT</td>
+                                <td class="total-price"  >{{quan(m)}}DT</td>
                                 <td class="close-td"><i class="ti-close" (click)="onDelete(m.id)"></i></td>
                             </tr>
                         
